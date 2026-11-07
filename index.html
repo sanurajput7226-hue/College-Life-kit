@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827"><title>CollegeLife Kit — Your campus, organized</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="#"><span class="brand-mark">C</span><span>CollegeLife<span class="brand-light">Kit</span><small>STUDENT COMMAND CENTER</small></span></a>
+  <div class="side-label">WORKSPACE</div>
+  <nav>
+    <button class="nav-item active" data-page="overview"><span>▦</span> Overview</button>
+    <button class="nav-item" data-page="attendance"><span>◷</span> Attendance</button>
+    <button class="nav-item" data-page="cgpa"><span>✳</span> CGPA calculator</button>
+    <button class="nav-item" data-page="expenses"><span>₹</span> Expense tracker</button>
+    <button class="nav-item" data-page="grades"><span>⌁</span> Grade predictor</button>
+    <button class="nav-item" data-page="gps"><span>⌖</span> Campus GPS</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="tip-card"><span class="tip-icon">✦</span><b>Small steps. Big semester.</b><p>Keep your academics and campus life on track.</p></div><div class="profile"><div class="avatar">S</div><div><b>Student workspace</b><small>Your personal dashboard</small></div></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><button class="menu-btn" id="menuBtn">☰</button><div><div class="eyebrow">YOUR PERSONAL STUDENT SPACE</div><h1 id="pageTitle">Overview</h1></div><div class="top-actions"><span class="today" id="today"></span><button class="icon-btn" id="resetBtn" title="Reset all local data">↺</button></div></header>
+<section class="page active" id="page-overview">
+  <div class="welcome"><div><div class="eyebrow light">YOUR SEMESTER, AT A GLANCE</div><h2>Make this semester<br><em>count.</em></h2><p>One place for your attendance, grades, money and campus navigation.</p></div><div class="welcome-art"><div class="orbit orbit1"></div><div class="orbit orbit2"></div><div class="cap">✦</div></div></div>
+  <div class="stats-grid">
+    <article class="stat-card"><div class="stat-top"><span>Attendance average</span><span class="stat-icon purple">◷</span></div><strong id="ovAttendance">—</strong><small>Across your subjects</small><div class="mini-track"><i id="ovAttendanceBar"></i></div></article>
+    <article class="stat-card"><div class="stat-top"><span>Current CGPA</span><span class="stat-icon blue">✳</span></div><strong id="ovCgpa">—</strong><small>Based on saved subjects</small><div class="mini-track"><i id="ovCgpaBar"></i></div></article>
+    <article class="stat-card"><div class="stat-top"><span>Monthly spending</span><span class="stat-icon orange">₹</span></div><strong id="ovSpend">₹0</strong><small id="ovBudgetText">Set a monthly budget</small><div class="mini-track"><i id="ovSpendBar"></i></div></article>
+    <article class="stat-card"><div class="stat-top"><span>Subjects tracked</span><span class="stat-icon green">▤</span></div><strong id="ovSubjects">0</strong><small>Attendance records</small><div class="mini-track"><i id="ovSubjectsBar"></i></div></article>
+  </div>
+  <div class="section-heading"><div><h3>Quick access</h3><p>Jump straight into what you need.</p></div></div>
+  <div class="quick-grid">
+    <button class="quick-card" data-go="attendance"><span class="quick-icon purple">◷</span><b>Track attendance</b><small>Classes attended and bunk planner</small><span class="arrow">↗</span></button>
+    <button class="quick-card" data-go="cgpa"><span class="quick-icon blue">✳</span><b>Calculate CGPA</b><small>Weighted grade point calculator</small><span class="arrow">↗</span></button>
+    <button class="quick-card" data-go="expenses"><span class="quick-icon orange">₹</span><b>Manage expenses</b><small>Know where your money goes</small><span class="arrow">↗</span></button>
+    <button class="quick-card" data-go="grades"><span class="quick-icon green">⌁</span><b>Predict grades</b><small>Estimate your final score</small><span class="arrow">↗</span></button>
+    <button class="quick-card" data-go="gps"><span class="quick-icon pink">⌖</span><b>Campus GPS</b><small>Find your current location</small><span class="arrow">↗</span></button>
+  </div>
+  <div class="bottom-grid"><div class="panel"><div class="panel-head"><div><h3>Attendance snapshot</h3><p>Your subjects at a glance</p></div><button class="text-btn" data-go="attendance">View all ↗</button></div><div id="overviewSubjects" class="empty-state">Add your subjects in Attendance to see your progress here.</div></div><div class="panel quote-panel"><span class="quote-mark">“</span><h3>Consistency beats<br>last-minute pressure.</h3><p>Show up, keep track, and give yourself room to improve.</p><span class="quote-foot">A LITTLE PROGRESS EVERY DAY ✦</span></div></div>
+</section>
+<section class="page" id="page-attendance">
+ <div class="page-intro"><div><div class="eyebrow">STAY ABOVE THE REQUIREMENT</div><h2>Attendance tracker</h2><p>Add each subject and record classes attended or missed.</p></div><div class="pill">Target: <b id="targetLabel">75%</b></div></div>
+ <div class="panel form-panel"><h3>Add a subject</h3><form id="subjectForm" class="inline-form"><label>Subject name<input id="subjectName" required placeholder="e.g. Programming Fundamentals"></label><label>Classes held<input id="subjectHeld" type="number" min="0" value="0" required></label><label>Classes attended<input id="subjectAttended" type="number" min="0" value="0" required></label><button class="primary-btn">+ Add subject</button></form><div class="form-note">You can edit counts anytime. Attendance is stored in this browser.</div></div>
+ <div class="toolbar"><h3>Your subjects</h3><label class="target-control">Minimum target <input id="attendanceTarget" type="number" min="1" max="100" value="75"> %</label></div><div id="subjectList" class="subject-list"></div>
+</section>
+<section class="page" id="page-cgpa">
+ <div class="page-intro"><div><div class="eyebrow">KNOW WHERE YOU STAND</div><h2>CGPA calculator</h2><p>Enter each course's credit and grade point for a weighted CGPA.</p></div><div class="pill">Formula: Σ(Credit × Grade) ÷ Σ(Credit)</div></div>
+ <div class="panel form-panel"><h3>Add course result</h3><form id="cgpaForm" class="inline-form"><label>Course name<input id="courseName" required placeholder="e.g. Mathematics"></label><label>Credits<input id="courseCredits" type="number" min="0.5" step="0.5" value="3" required></label><label>Grade point<input id="courseGrade" type="number" min="0" max="10" step="0.1" value="8" required></label><button class="primary-btn">+ Add course</button></form></div>
+ <div class="cgpa-result"><div><span class="eyebrow light">CALCULATED CGPA</span><div class="big-number" id="cgpaValue">0.00</div><p id="cgpaCaption">Add course results to calculate.</p></div><div class="result-ring"><span id="cgpaPercent">0%</span><small>of 10.0</small></div></div><div class="panel"><div class="panel-head"><div><h3>Course breakdown</h3><p>Weighted grade points</p></div></div><div id="courseList" class="table-wrap empty-state">No course results added yet.</div></div>
+</section>
+<section class="page" id="page-expenses">
+ <div class="page-intro"><div><div class="eyebrow">BE SMART WITH YOUR MONEY</div><h2>Expense tracker</h2><p>Log your spending and keep an eye on your monthly budget.</p></div></div>
+ <div class="expense-summary"><div class="expense-total"><span>Spent this month</span><strong id="monthSpend">₹0</strong><small id="remainingBudget">Set a budget to see your balance</small></div><div class="budget-box"><label>Monthly budget <div class="budget-input"><span>₹</span><input id="budgetInput" type="number" min="0" placeholder="e.g. 8000"></div></label><div class="budget-track"><i id="budgetBar"></i></div></div></div>
+ <div class="panel form-panel"><h3>Add an expense</h3><form id="expenseForm" class="inline-form"><label>What was it?<input id="expenseTitle" required placeholder="e.g. Lunch"></label><label>Amount (₹)<input id="expenseAmount" type="number" min="1" step="0.01" required placeholder="150"></label><label>Category<select id="expenseCategory"><option>Food</option><option>Travel</option><option>Study</option><option>Shopping</option><option>Stay</option><option>Other</option></select></label><button class="primary-btn">+ Add expense</button></form></div>
+ <div class="panel"><div class="panel-head"><div><h3>Recent transactions</h3><p>Your expense history</p></div><span class="pill" id="expenseCount">0 transactions</span></div><div id="expenseList" class="transaction-list empty-state">No expenses yet. Add your first transaction above.</div></div>
+</section>
+<section class="page" id="page-grades">
+ <div class="page-intro"><div><div class="eyebrow">PLAN YOUR FINISH</div><h2>Grade predictor</h2><p>Estimate the score you need in your remaining assessments.</p></div></div>
+ <div class="predict-layout"><div class="panel form-panel"><h3>Assessment details</h3><form id="predictForm" class="stack-form"><label>Current score earned (%)<input id="currentScore" type="number" min="0" max="100" value="32" step="0.1"></label><label>Weight completed (%)<input id="completedWeight" type="number" min="0" max="99.9" value="40" step="0.1"></label><label>Desired final grade (%)<input id="desiredGrade" type="number" min="0" max="100" value="80" step="0.1"></label><button class="primary-btn">Calculate required score</button></form><p class="form-note">“Current score earned” means points already earned toward the final 100. Example: 32 points from completed work.</p></div><div class="prediction-card"><span class="eyebrow light">SCORE NEEDED IN REMAINING WORK</span><div class="big-number" id="requiredScore">80%</div><p id="predictionMessage">Complete the details to see your target.</p><div class="prediction-track"><i id="requiredBar"></i></div><div class="prediction-foot"><span>0%</span><span>100%</span></div></div></div>
+ <div class="panel info-panel"><span class="info-icon">ⓘ</span><div><b>How this works</b><p>Required score = (desired final grade − points already earned) ÷ remaining assessment weight × 100. This is a planning estimate; your college's grading and rounding rules may differ.</p></div></div>
+</section>
+<section class="page" id="page-gps">
+ <div class="page-intro"><div><div class="eyebrow">FIND YOUR WAY AROUND</div><h2>Campus GPS</h2><p>Use your device location to get your coordinates or open directions in a map app.</p></div><div class="pill">Location access is optional</div></div>
+ <div class="gps-layout"><div class="gps-card"><div class="gps-visual"><div class="gps-pulse"></div><div class="gps-pin">⌖</div><div class="gps-grid"></div></div><h3>Your current location</h3><p id="gpsStatus">Tap the button below and allow location access in your browser.</p><button class="primary-btn wide" id="locateBtn">⌖ Detect my location</button><div class="coordinates" id="coordinates"><div><small>LATITUDE</small><b>—</b></div><div><small>LONGITUDE</small><b>—</b></div><div><small>ACCURACY</small><b>—</b></div></div><a class="map-link disabled" id="mapsLink" href="#" target="_blank" rel="noopener">Open in Google Maps ↗</a></div><div class="panel campus-panel"><span class="stat-icon pink">✦</span><h3>Campus navigation</h3><p>GPS detects your device's location. For directions to a specific building, enter its name and open the route in Google Maps.</p><label>Destination<input id="destination" placeholder="e.g. University Library"></label><button class="secondary-btn wide" id="destinationBtn">Get directions ↗</button><div class="notice">GPS accuracy depends on your device, browser permissions and signal. This page does not continuously track you.</div></div></div>
+</section>
+<footer>Made for student life <span>✦</span> Your data stays in this browser</footer>
+</main></div>
+<div class="toast" id="toast"></div><script src="app.js"></script>
+</body></html>
